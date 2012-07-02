@@ -1,0 +1,54 @@
+/* HowTo.txt */ 
+//----------------------------------------------------------------------------------------
+//
+//  Project: CCore 1.02
+//
+//  License: Boost Software License - Version 1.0 - August 17th, 2003 
+//
+//            see http://www.boost.org/LICENSE_1_0.txt or the local copy
+//
+//  Copyright (c) 2010 Sergey Strukov. All rights reserved.
+//
+//----------------------------------------------------------------------------------------
+
+//
+// Patch source for ld
+//
+
+<SRC>/ld/scripttempl/elf.sc   <--  replace
+   
+ The new file contains two additional sections:
+   
+  .context_data ALIGN(4) :
+  {
+   . = ALIGN(4) ;
+   __std_context_data = . ;
+   *(.context_data)
+   . = ALIGN(4) ;
+   __std_context_data_lim = . ;
+  }
+   
+  .mem ALIGN(16) :
+  {
+   . = ALIGN(16) ;
+   __std_mem = . ;
+
+   . = . + __std_mem_size ;
+
+   . = ALIGN(16) ;
+   __std_mem_lim = . ;
+  }
+   
+   
+<SRC>/ld/emulparams/armelf.sh   <--  replace
+
+ The changes are:
+   
+  OUTPUT_FORMAT="elf32-bigarm"
+
+  TEXT_START_ADDR=__std_image_base
+  ENTRY=__std_start
+  MAXPAGESIZE=256
+
+  remove STACK_ADDR=0x80000
+  

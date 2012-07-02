@@ -1,0 +1,65 @@
+/* HowTo.txt */ 
+//----------------------------------------------------------------------------------------
+//
+//  Project: CCore 1.02
+//
+//  License: Boost Software License - Version 1.0 - August 17th, 2003 
+//
+//            see http://www.boost.org/LICENSE_1_0.txt or the local copy
+//
+//  Copyright (c) 2010 Sergey Strukov. All rights reserved.
+//
+//----------------------------------------------------------------------------------------
+
+//
+// cygwin
+//
+
+Assume cygwin is installed with the minimal development content: make, C-4, C++-4, libiconv.
+
+//
+// m4-1.4.16
+//
+
+Download, build, install.
+
+//
+// gmp-5.0.1
+//
+
+Download, build, install. 
+
+//
+// mpfr-3.0.0
+//
+
+Download, build, install. 
+
+//
+// mpc-0.8.2
+//
+
+Download, build, install. 
+
+//
+// ppl-0.11.2
+//
+
+Download, build, install. 
+
+//
+// Building gcc-4.7.1
+//
+
+1) Download.
+2) Unpack.
+3) Create empty build folder (Downloads/Build/gcc-4.7.1).
+4) Copy MakeCfg there (check relative path and options).
+
+5) make -f MakeCfg
+   make 
+   make html
+   make install
+   make install-html
+
+   

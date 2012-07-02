@@ -1,0 +1,22 @@
+# MakeCfg
+#----------------------------------------------------------------------------------------
+#
+#  Project: CCore 1.02
+#
+#  Source: http://gmplib.org/
+#
+#  License: Boost Software License - Version 1.0 - August 17th, 2003 
+#
+#            see http://www.boost.org/LICENSE_1_0.txt or the local copy
+#
+#  Copyright (c) 2012 Sergey Strukov. All rights reserved.
+#
+#----------------------------------------------------------------------------------------
+
+CONFIGURE = ../../gmp-5.0.1/configure
+
+OPT = --enable-cxx       \
+      --disable-shared 
+
+all:
+	CXXFLAGS="-m32 -O2 -pedantic -fomit-frame-pointer -mtune=pentiumpro -march=pentiumpro -fexceptions" $(CONFIGURE) $(OPT)
